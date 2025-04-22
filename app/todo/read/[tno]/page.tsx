@@ -1,6 +1,20 @@
 import TodoReadComponent from "@/app/components/todo/readComponent";
 
 
+type Params = {
+    tno: string;
+};
+
+export async function generateStaticParams(): Promise<Params[]> {
+
+    const res = await fetch("http://localhost:8080/api/todo/list?size=20")
+
+    const todos = await res.json()
+
+    return todos.dtoList.map( (todo:Todo) =>  {tno: String(todo.tno)});
+
+}
+
 async function TodoReadPage({params}: {params:Promise<any>}) {
 
     const param = await params
