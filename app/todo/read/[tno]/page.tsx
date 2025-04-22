@@ -5,6 +5,9 @@ type Params = {
     tno: string;
 };
 
+//다시 생성 시간 
+export const revalidate = 60
+
 export async function generateStaticParams(): Promise<Params[]> {
 
     const res = await fetch("http://localhost:8080/api/todo/list?size=20")
