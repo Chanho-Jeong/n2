@@ -1,4 +1,4 @@
-
+import TodoReadComponent from "@/app/components/todo/readComponent";
 
 
 async function TodoReadPage({params}: {params:Promise<any>}) {
@@ -16,6 +16,8 @@ async function TodoReadPage({params}: {params:Promise<any>}) {
     return (
         <div>
             <div className={'text-4xl'}>Todo Read Page</div>
+
+            <TodoReadComponent todo={data} />
         </div>
     )
 
