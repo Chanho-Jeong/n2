@@ -9,9 +9,11 @@ export async function generateStaticParams(): Promise<Params[]> {
 
     const res = await fetch("http://localhost:8080/api/todo/list?size=20")
 
-    const todos = await res.json()
+    const todos:PageResponse<Todo> = await res.json()
 
-    return todos.dtoList.map( (todo:Todo) =>  {tno: String(todo.tno)});
+    console.log("----------------------")
+
+    return todos.dtoList.map( (todo:Todo) =>  ({tno: String(todo.tno)}));
 
 }
 
